@@ -1,0 +1,15 @@
+# Site settings
+title: Thomas Barthelemy
+email: thomasb@gobeta.com.cn
+description: "Thomas Barthelemy - Personal website"
+baseurl: ""
+url: "http://draena.github.io"
+twitter_username:
+github_username: draena
+facebook_username:
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+paginate: 5
+exclude: ["node_modules"]
