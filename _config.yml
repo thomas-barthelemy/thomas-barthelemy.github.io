@@ -5,8 +5,9 @@ description: "Thomas Barthelemy - Personal website"
 baseurl: ""
 url: "http://draena.github.io"
 twitter_username:
-github_username: draena
 facebook_username:
+github_username: draena
+linkedin_username: thomasbarthelemy
 
 # Build settings
 markdown: kramdown
