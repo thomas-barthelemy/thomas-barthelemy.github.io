@@ -13,4 +13,5 @@ linkedin_username: thomasbarthelemy
 markdown: kramdown
 permalink: pretty
 paginate: 5
+paginate_path: "blog/page:num"
 exclude: ["node_modules"]
