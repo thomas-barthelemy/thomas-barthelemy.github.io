@@ -3,10 +3,10 @@ title: Thomas Barthelemy
 email: thomasb@gobeta.com.cn
 description: "Thomas, Barthelemy, Thomas Barthelemy, Agile software engineer, project manager"
 baseurl: ""
-url: "http://thomas.barthelemy.github.io"
+url: "http://thomas-barthelemy.github.io"
 twitter_username:
 facebook_username:
-github_username: thomas.barthelemy
+github_username: thomas-barthelemy
 linkedin_username: thomasbarthelemy
 
 # Build settings
@@ -16,7 +16,7 @@ paginate: 5
 paginate_path: "blog/page:num"
 exclude: ["node_modules"]
 
-highlighter: rouge
+highlighter: pygments
 
 gems:
 - jekyll-redirect-from
