@@ -2,7 +2,7 @@
     "name": "Living in IT",
     "title": "Living in IT",
     "version": "1.0.0",
-    "homepage": "thomas.barthelemy.github.io",
+    "homepage": "thomas-barthelemy.github.io",
     "author": "Thomas Barthelemy",
     "devDependencies": {
         "grunt": "~0.4.5",

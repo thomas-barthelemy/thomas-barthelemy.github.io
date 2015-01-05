@@ -16,25 +16,27 @@ Let's take a small example: in order to display some content to the user, we nee
 
 In a **Synchronous** code (as opposed to **Asynchronous**), we would need to download those information one by one, one after the other. During this time the software will be waiting until it is finished, which means it **won't** answer to the user during this time. You all experienced some "not responding" software, you know how it feels.
 
-**Asynchronous **programming will allow us to access the web multiple times at the same time (better performances) and to keep the software responding for the user (better user experience).
+**Asynchronous** programming will allow us to access the web multiple times at the same time (better performances) and to keep the software responding for the user (better user experience).
 
 # Our first step with Async
 In this example we will code a little bit of code that allows us to search into one or multiple files. Let's start by the synchronous simple version:
 
 {% highlight csharp %}
-        public static bool SearchInFile(string filePath, string searchText)
-        {
-            var result = File.ReadAllText(filePath).Contains(searchText);
-            return result;
-        }
+public static bool SearchInFile(string filePath, string searchText)
+{
+	var result = File.ReadAllText(filePath).Contains(searchText);
+	return result;
+}
 {% endhighlight %}
 
 In order to make this method **Asynchronous** we will need to use some new keywords and a new class: **Async**, **Await** and **Task**.
 
-        public static async Task<bool> SearchInFileAsync(string filePath, string searchText)
-        {
-            return await Task.Run(() => SearchInFile(filePath, searchText));
-        }
+{% highlight csharp %}
+public static async Task<bool> SearchInFileAsync(string filePath, string searchText)
+{
+	return await Task.Run(() => SearchInFile(filePath, searchText));
+}
+{% endhighlight %}
 
 * **async** will state that our method is **Asynchronous**, that's a good start!
 * **Task** represents an operation (task) to be started, in progress or finished, an **async** method can only return a **Task**, **Task&lt;T&gt;**, or **void**.
@@ -47,17 +49,19 @@ We already stated, we can **await** a task in order to get its result, so if you
 
 Let's see what we can do with multiple tasks: we are know searching into a list of files:
 
-        public static bool SearchInFiles(IEnumerable<string> filesPath, string searchText)
-        {
-            return filesPath.Any(filePath => SearchInFile(filePath, searchText));
-        }
+{% highlight csharp %}
+public static bool SearchInFiles(IEnumerable<string> filesPath, string searchText)
+{
+	return filesPath.Any(filePath => SearchInFile(filePath, searchText));
+}
 
-        public static async Task<bool> SearchInFilesAsync(IEnumerable<string> filesPath, string searchText)
-        {
-            var tasks = filesPath.Select(filePath => SearchInFileAsync(filePath, searchText)).ToList();
+public static async Task<bool> SearchInFilesAsync(IEnumerable<string> filesPath, string searchText)
+{
+	var tasks = filesPath.Select(filePath => SearchInFileAsync(filePath, searchText)).ToList();
 
-            return await Task.WhenAll(tasks).ContinueWith(task => tasks.Any(t => t.Result));
-        }
+	return await Task.WhenAll(tasks).ContinueWith(task => tasks.Any(t => t.Result));
+}
+{% endhighlight %}
 
 Our first step here is to run a task on each file, but we do not await them right away, instead we store them in a list of tasks. By not awaiting the tasks, we allow them to run simultaneously which will give us better  efficiency.
 
@@ -67,53 +71,57 @@ So here the **ContinueWith** method allows us to run a lambda expression, a dele
 # How to cancel a task
 Since here we only care for one single positive result, we could definitely stop to search when we found what we were looking for, which would greatly improve the performances. We could also search our files line by line and stop when something is found.
 
-        public static async Task<bool> SearchInFileAsync(string filePath, string searchText, CancellationToken ct)
-        {
-            var s = File.Open(filePath, FileMode.Open);
-            var sr = new StreamReader(s);
-            var result = false;
-            while (!sr.EndOfStream)
-            {
-                if (ct.IsCancellationRequested)
-                    break;
+{% highlight csharp %}
+public static async Task<bool> SearchInFileAsync(string filePath, string searchText, CancellationToken ct)
+{
+	var s = File.Open(filePath, FileMode.Open);
+	var sr = new StreamReader(s);
+	var result = false;
+	while (!sr.EndOfStream)
+	{
+		if (ct.IsCancellationRequested)
+			break;
 
-                var line = await sr.ReadLineAsync();
-                if (!line.Contains(searchText)) continue;
+		var line = await sr.ReadLineAsync();
+		if (!line.Contains(searchText)) continue;
 
-                result = true;
-                break;
-            }
+		result = true;
+		break;
+	}
 
-            sr.Close();
-            s.Close();
-            return result;
-        }
+	sr.Close();
+	s.Close();
+	return result;
+}
+{% endhighlight %}
 
 We introduced one more object here: the **Cancellation token**. Whenever we start a task, we are able to give a token in parameter to let us interact further with the task, for example here we check regularly if the task was cancelled to stop searching when necessary.
 
 Let's see where this token comes from:
 
-        public static async Task<bool> AdvSearchInFilesAsync(IEnumerable<string> filesPath, string searchText)
-        {
-            var cts = new CancellationTokenSource();
-            var tasks = filesPath.Select(filePath => SearchInFileAsync(filePath, searchText, cts.Token)).ToList();
+{% highlight csharp %}
+public static async Task<bool> AdvSearchInFilesAsync(IEnumerable<string> filesPath, string searchText)
+{
+	var cts = new CancellationTokenSource();
+	var tasks = filesPath.Select(filePath => SearchInFileAsync(filePath, searchText, cts.Token)).ToList();
 
-            while (tasks.Count > 0)
-            {
-                var task = await Task.WhenAny(tasks);
-                tasks.Remove(task);
+	while (tasks.Count > 0)
+	{
+		var task = await Task.WhenAny(tasks);
+		tasks.Remove(task);
 
-                if (! await task) continue;
+		if (! await task) continue;
 
-                cts.Cancel();
-                return true;
-            }
-            return false;
-        }
+		cts.Cancel();
+		return true;
+	}
+	return false;
+}
+{% endhighlight %}
 
 The **Cancellation Token Source** contains a **cancellation token** and allows us to cancel (or cancel after an amount of time) tasks using this token.
 
-Our starting code remains the same, we get our tasks into a list, but this time we will use the "**WhenAny"** method that will be triggered as soon as a task is completed in the list.
+Our starting code remains the same, we get our tasks into a list, but this time we will use the **WhenAny** method that will be triggered as soon as a task is completed in the list.
 
 Concretely here, each time a task is completed:
 
