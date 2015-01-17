@@ -36,10 +36,8 @@ What you can do is have VT-x enabled and run a Virtual Machine with Hyper-V, whi
 Another possibility is to create a way to quickly switch between those two (as enabling-disabling from the features menu is definitely not quick),
 One way to achieve that is to create a new boot entry using **bcdedit** with the **hypervisorlaunchtype off** parameter:
 
-````
-C:\>bcdedit /copy {current} /d "No Hyper-V" 
-The entry was successfully copied to {ff-23-113-824e-5c5144ea}. 
-
-C:\>bcdedit /set {ff-23-113-824e-5c5144ea} hypervisorlaunchtype off 
-The operation completed successfully.
-````
+    C:\>bcdedit /copy {current} /d "No Hyper-V" 
+    The entry was successfully copied to {ff-12-123-1234-123456}. 
+    
+	C:\>bcdedit /set {ff-12-123-1234-123456} hypervisorlaunchtype off 
+    The operation completed successfully.
