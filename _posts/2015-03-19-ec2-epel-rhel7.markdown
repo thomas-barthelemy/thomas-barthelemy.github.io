@@ -1,0 +1,36 @@
+---
+layout:     post-no-pic
+title:      "EPEL repository on an EC2 hosted instance of RHEL7"
+subtitle:   "Get natively missing package like php-mbstring"
+date:       2015-03-19 10:15:40
+author:     "Thomas Barthelemy"
+---
+
+I recently had to create an AWS EC2 AMI for Kaltura (see kaltura.org) using Red Hat Enterprise Linux 9 (RHEL7),
+and when trying to install the  Kaltura package I ran into missing dependencies.
+A bit of reading made me realize that not all repositories where accessible by default and some
+tweaking was necessary to get it to work.
+Here are a few cool things I used:
+
+# List and enable available repositories
+
+Not all repositories are enabled by default, you can list them using the yum-utils package installed
+by default on the EC2 instances of RHEL7 using:
+    
+    yum repolist all
+    
+You can then chose, for example, to enable the optional repository:
+
+    yum-config-manager --enable rhui-REGION-rhel-server-optional
+    
+
+# EPEL Repository
+I installed the Fedora Project, the latest address being:
+    
+    http://download-i2.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+    
+So you can install this simply using:
+
+    rpm -Uvh http://download-i2.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+    yum update
+    
