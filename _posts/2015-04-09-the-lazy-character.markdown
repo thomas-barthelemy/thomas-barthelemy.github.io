@@ -17,6 +17,14 @@ I quickly ran the app in the appropriate local while checking the resource at th
 - Bug reproduced, the character is indeed misplaced
 - The resource string is... correct?
 
+So the string in the resource:
+
+    ⽣成带水印预览
+
+Would show up in the label as:
+
+    成带水印预览⽣
+
 Whatever I would input in this resources, this specific character would always show at the end.
 While double-clicking to select the string I realized it would leave that character out of the selection, it was definitely special.
 
