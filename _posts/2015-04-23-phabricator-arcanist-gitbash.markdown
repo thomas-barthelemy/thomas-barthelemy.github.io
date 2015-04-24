@@ -186,5 +186,5 @@ it will probably break itself if the file is updated which isn't a bad thing act
 
 # Some useful links
 
-[Arcanist User Guide](https://secure.phabricator.com/book/phabricator/article/arcanist/)
-[Arcanist User Guide: Windows](https://secure.phabricator.com/book/phabricator/article/arcanist_windows/)
+- [Arcanist User Guide](https://secure.phabricator.com/book/phabricator/article/arcanist/)
+- [Arcanist User Guide: Windows](https://secure.phabricator.com/book/phabricator/article/arcanist_windows/)
