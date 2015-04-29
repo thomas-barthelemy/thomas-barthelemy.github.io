@@ -4,6 +4,7 @@ title:      "Using Arcanist CLI tool with Git-Bash"
 subtitle:   "Using the Phabricator Arcanist CLI tool on Windows with ANSI colors and auto-completion"
 date:       2015-04-23 19:38:00
 author:     "Thomas Barthelemy"
+tags:       [windows, phabricator]
 ---
 
 I've been recently playing around with Phabricator to plan a deployment for the company and one of the big

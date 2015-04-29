@@ -4,6 +4,7 @@ title:      "Vagrant Helper"
 subtitle:   "Building a OS-Independent CLI tool to avoid having to SSH into your vagrant"
 date:       2015-04-13 18:00:00
 author:     "Thomas Barthelemy"
+tags:       [linux, windows, vagrant]
 ---
 
 Our development environment often includes Vagrant machines,

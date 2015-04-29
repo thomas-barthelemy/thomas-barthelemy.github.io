@@ -4,6 +4,7 @@ title:      "VT-X Not available in VirtualBox"
 subtitle:   "A love triangle between VT-x, Hyper-V and VirtualBox"
 date:       2015-01-17 10:14:00
 author:     "Thomas Barthelemy"
+tags:       [virtualization]
 ---
 
 I found myself recently in an interesting situation, which all started with a simple need: I need to run a 64-bit virtual machine on my laptop.

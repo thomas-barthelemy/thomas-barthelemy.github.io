@@ -4,6 +4,7 @@ title:      "Let's move Redmine"
 subtitle:   "When you just want to change everything!"
 date:       2015-03-25 15:25:00
 author:     "Thomas Barthelemy"
+tags:       [redmine, linux]
 ---
 
 Some of the upcoming changes for me at work pushed to review all processes and infrastructure

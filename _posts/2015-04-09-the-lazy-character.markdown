@@ -4,6 +4,7 @@ title:      "The lazy character"
 subtitle:   "The story of a character that would always show up at the end"
 date:       2015-04-09 15:04:00
 author:     "Thomas Barthelemy"
+tags:       [dotnet]
 ---
 
 A minor bug report came up to me today:
