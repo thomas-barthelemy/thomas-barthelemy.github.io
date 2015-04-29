@@ -1,5 +1,5 @@
 ---
 layout: posts_by_tags
 tag: vagrant
-permalink: /blog/tag/vagrant/
+permalink: /tag/vagrant/
 ---
