@@ -2,13 +2,19 @@
 layout: default
 ---
 
+{% for data_tag in site.data.tags %}
+    {% if data_tag.slug == page.tag %}
+        {% assign tagName = data_tag.name %}
+    {% endif %}
+{% endfor %}
+
 <!-- Filtered List Header -->
 <header class="intro-header" style="background:black">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>{{ page.tag }}</h1>
+                    <h1>{{ tagName }}</h1>
                     <h2 class="subheading">List of posts filtered by tag.</h2>
                 </div>
             </div>
@@ -21,12 +27,13 @@ layout: default
     {% if site.tags[page.tag] %}
         {% for post in site.tags[page.tag] %}
             <div class="post-preview">
-                <a href="{{ post.url }}/">
+                <a href="{{ post.url }}">
                     <h2>{{ post.title }}</h2>
-                    {% if page.subtitle %}
-                    <h3>{{ post.subtitle }}</h3>
+                    {% if post.subtitle %}
+                        <h3>{{ post.subtitle }}</h3>
                     {% endif %}
                 </a>
+                <hr>
             </div>
         {% endfor %}
     {% else %}
