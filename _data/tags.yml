@@ -1,0 +1,47 @@
+- slug: jekyll
+  name: Jekyll
+
+- slug: php
+  name: PHP
+
+- slug: dotnet
+  name: .NET
+
+- slug: agile
+  name: Agile
+
+- slug: csharp
+  name: C#
+
+- slug: management
+  name: Management
+
+- slug: github
+  name: Github
+
+- slug: redmine
+  name: Redmine
+
+- slug: phabricator
+  name: Phabricator
+
+- slug: virtualization
+  name: Virtualization
+
+- slug: rhel
+  name: RHEL
+
+- slug: linux
+  name: Linux
+
+- slug: aws
+  name: AWS
+
+- slug: vagrant
+  name: Vagrant
+
+- slug: windows
+  name: Windows
+
+- slug: other
+  name: Other

@@ -10,7 +10,7 @@ layout: default
                 <div class="post-heading">
                     <h1>{{ page.title }}</h1>
                     {% if page.subtitle %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
+                        <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% endif %}
                     <span class="meta">Posted by {{ page.author }} on {{ page.date | date: "%B %-d, %Y" }}</span>
                 </div>
@@ -18,6 +18,36 @@ layout: default
         </div>
     </div>
 </header>
+
+<!-- Tag handler -->
+{% assign post = page %}
+{% if post.tags.size > 0 %}
+    {% capture tags_content %}
+        Posted with
+        {% if post.tags.size == 1 %}
+            <i class="fa fa-tag"></i>
+        {% else %}
+            <i class="fa fa-tags"></i>
+        {% endif %}:
+    {% endcapture %}
+    {% for post_tag in post.tags %}
+        {% for data_tag in site.data.tags %}
+            {% if data_tag.slug == post_tag %}
+                {% assign tag = data_tag %}
+            {% endif %}
+        {% endfor %}
+        {% if tag %}
+            {% capture tags_content_temp %}
+                {{ tags_content }}
+                <a href="/tag/{{ tag.slug }}/">{{ tag.name }}</a>
+                {% if forloop.last == false %},{% endif %}
+            {% endcapture %}
+            {% assign tags_content = tags_content_temp %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% assign tags_content = '' %}
+{% endif %}
 
 <!-- Post Content -->
 <article>
@@ -41,7 +71,7 @@ layout: default
                     </li>
                     {% endif %} 
                 </ul>
-
+                <p id="post-meta">{{ tags_content }}</p>
             </div>
         </div>
     </div>

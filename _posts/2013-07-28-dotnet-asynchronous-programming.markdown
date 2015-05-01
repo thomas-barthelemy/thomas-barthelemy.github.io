@@ -4,6 +4,7 @@ title:      ".NET 4.5 Asynchronous Programming"
 subtitle:   "Among the great new features brought into the .NET Framework with the version 4.5, the improvement done to the Asynchronous programming is definitely my favourite."
 date:       2013-07-28 12:00:00
 author:     "Thomas Barthelemy"
+tags:		[csharp, dotnet]
 ---
 
 Among the great new features brought into the .NET Framework with the version 4.5, the improvement done to the Asynchronous programming is definitely my favourite and most expected.
