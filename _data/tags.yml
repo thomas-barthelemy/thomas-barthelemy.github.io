@@ -45,3 +45,6 @@
 
 - slug: other
   name: Other
+
+- slug: visualstudio
+  name: Visual Studio
