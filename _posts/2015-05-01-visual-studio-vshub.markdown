@@ -31,3 +31,7 @@ a simple fix, until a better one is officially published by Microsoft:
 - rename `Microsoft.VsHub.Server.HttpHostx64.exe` to `Microsoft.VsHub.Server.HttpHostx64.exe.bak`
 - Create a copy of `Microsoft.VsHub.Server.HttpHost.exe` and rename it `Microsoft.VsHub.Server.HttpHostx64.exe`
 - Re-start Visual Studio
+
+The issue has been reported and a thread is available here:
+
+[https://connect.microsoft.com/VisualStudio/feedback/details/1293295/httphostx64-exe-has-stopped-working](https://connect.microsoft.com/VisualStudio/feedback/details/1293295/httphostx64-exe-has-stopped-working)
