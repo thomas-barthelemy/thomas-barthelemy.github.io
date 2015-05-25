@@ -43,5 +43,8 @@
 - slug: windows
   name: Windows
 
+- slug: ansible
+  name: Ansible
+  
 - slug: other
   name: Other
