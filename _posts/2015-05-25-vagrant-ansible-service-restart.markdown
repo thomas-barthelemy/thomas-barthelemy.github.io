@@ -1,7 +1,7 @@
 ---
 layout:     post-no-pic
 title:      "Ansible - FATAL: all hosts have already failed"
-subtitle:   "When restarting a service with Ansible and Vagrant just won't work because 'All hosts have aready failed'"
+subtitle:   "When restarting a service with Ansible and Vagrant just won't work because 'All hosts have already failed'"
 date:       2015-05-25 16:03:00
 author:     "Thomas Barthelemy"
 tags:       [vagrant, linux, ansible]
@@ -9,7 +9,7 @@ tags:       [vagrant, linux, ansible]
 
 I finally had a little time to "fix" a bug that recently shown up:
 
-When trying to restart a service during a vagrant provisioning with ansible on a Windows host, I was given the following error:
+When trying to restart a service during a vagrant provisioning with Ansible on a Windows host, I was given the following error:
 
     ==> default: NOTIFIED: [php | restart PHP-FPM] *********************************
     ************
