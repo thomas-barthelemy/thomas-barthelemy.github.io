@@ -16,8 +16,8 @@
 - slug: management
   name: Management
 
-- slug: github
-  name: Github
+- slug: git
+  name: Git
 
 - slug: redmine
   name: Redmine
@@ -51,3 +51,6 @@
 
 - slug: visualstudio
   name: Visual Studio
+
+- slug: docker
+  name: Docker
