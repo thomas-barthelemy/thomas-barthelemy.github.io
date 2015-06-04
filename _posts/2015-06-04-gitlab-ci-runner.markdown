@@ -16,6 +16,7 @@ First, we will start from Sameer Naik GitLab-CI Runner docker:
     docker pull sameersbn/gitlab-ci-runner:latest
 
 # Configuring the Runner
+
 ## Mapped Folder
 You will need a mapped folder to store the configuration, so let's create one:
 
