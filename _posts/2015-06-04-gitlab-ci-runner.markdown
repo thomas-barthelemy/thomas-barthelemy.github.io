@@ -12,16 +12,15 @@ here is how I ended up doing it:
 
 # The base docker
 First, we will start from Sameer Naik GitLab-CI Runner docker:
-```
-docker pull sameersbn/gitlab-ci-runner:latest
-```
+
+    docker pull sameersbn/gitlab-ci-runner:latest
 
 # Configuring the Runner
 ## Mapped Folder
 You will need a mapped folder to store the configuration, so let's create one:
-```
-mkdir -p /opt/gitlab-ci-runner
-```
+
+    mkdir -p /opt/gitlab-ci-runner
+
 *Note: The directory path does not matter, if you chose another one just change it
 accordingly in the mapping (-v) below*
 
@@ -31,11 +30,10 @@ GitLab-CI Project Runners page.
 
 Hopefully setting that up is fairly easy:
 
-```
-docker run --name gitlab-ci-runner -it --rm \
-    -v /opt/gitlab-ci-runner:/home/gitlab_ci_runner/data \
-  sameersbn/gitlab-ci-runner:latest app:setup
-```
+    docker run --name gitlab-ci-runner -it --rm \
+        -v /opt/gitlab-ci-runner:/home/gitlab_ci_runner/data \
+      sameersbn/gitlab-ci-runner:latest app:setup
+
 *Note: you might need to `sudo` that command*
 A little explanation on the command parameters:
 
@@ -55,9 +53,9 @@ that
 [installing a SSH Server on a Docker container is just not the way to go](https://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/).
 
 So what to do? Easy:
-```
-docker exec -it gitlab-ci-runner bash
-```
+
+    docker exec -it gitlab-ci-runner bash
+
 *Note: This will only work for docker version `1.3.0` or higher.*
 
 ### Running the Runner
@@ -65,10 +63,8 @@ docker exec -it gitlab-ci-runner bash
 Once all your CI runner requirements installed, you have to run the GitLab-CI runner 
 script before you exit the container:
 
-```
-root@GitLab-ci-runner:/home/gitlab_ci_runner/gitlab-ci-runner/bin# nohup ./runner &
-[1] 117
-```
+    root@GitLab-ci-runner:/home/gitlab_ci_runner/gitlab-ci-runner/bin# nohup ./runner &
+    [1] 117
 
 You can now exit the container, you runner is good to go.
 
@@ -88,18 +84,16 @@ And that should be it!
 
 # Start / Stop the container
 
-```
-docker stop gitlab-ci-runner
-docker start gitlab-ci-runner
-docker restart gitlab-ci-runner
-```
+    docker stop gitlab-ci-runner
+    docker start gitlab-ci-runner
+    docker restart gitlab-ci-runner
 
 # Other considerations
 As it is, your container is not easy to scale, backup, share...
 One possibility is to (once your requirements are set up) to use `docker commit`
 and then export the container in an archive.
 
-If possible you can also do the requirements install using a dockerfile, that will make
+If possible you can also do the requirements install using a `dockerfile`, that will make
 your runner incredibly easy to re-create should the need arise.
 
 
