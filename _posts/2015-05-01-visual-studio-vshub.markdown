@@ -9,6 +9,11 @@ tags:       [windows, visualstudio]
 
 # The HttpHostx64.exe error
 
+## Edit
+With the help of the Microsoft Connect team we were about to locate the issue
+on `System32/ASProxy64.dll` which belongs to the Astrill VPN software.
+You can read more about it on the Connect thread linked at the end.
+
 In Visual Studio CTP and Visual Studio RC I started having the following error
 repeatedly:
 
