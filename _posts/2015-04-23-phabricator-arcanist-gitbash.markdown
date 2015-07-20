@@ -155,7 +155,7 @@ behavior of the **arc** command:
     }
 
 **EDIT**:
-More recent versions of phputils uses the error output as well which need an extra addition in order
+More recent versions of phputils use the error output as well which needs an extra addition in order
 to be caught by our cat:
 
     function arc(){
