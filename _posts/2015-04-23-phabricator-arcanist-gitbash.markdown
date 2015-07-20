@@ -153,7 +153,15 @@ behavior of the **arc** command:
     function arc(){
         command arc $@|cat
     }
-    
+
+**EDIT**:
+More recent versions of phputils uses the error output as well which need an extra addition in order
+to be caught by our cat:
+
+    function arc(){
+        command arc $@ 2>&1|cat
+    }
+
 ## Completion error on non-git folders:
  
 Finally I noticed than trying to tab-complete on a non-git folder would output the following:
@@ -162,7 +170,7 @@ Finally I noticed than trying to tab-complete on a non-git folder would output t
     
     ^[[1mException^[[m
     ...
-    
+
 Which is the result of the following error:
 
     $ arc shell-complete
@@ -170,7 +178,7 @@ Which is the result of the following error:
     Argument 1 passed to idx() must be of the type array, null given, called in C:\u
     tils\arcanist\src\workflow\ArcanistWorkflow.php on line 618 and defined
     (Run with `--trace` for a full exception trace.)
-    
+
 To get rid of that I modified the bash-completion file (the one added as source) to check for 
 an error on this line specifically
 
@@ -181,7 +189,7 @@ an error on this line specifically
         return 0
     fi
     ...
-    
+
 Although this is a quick hack that isn't so clean,
 it will probably break itself if the file is updated which isn't a bad thing actually.
 
