@@ -4,7 +4,7 @@ title:      "A simple flow using Arcanist and Differential for code review (Part
 subtitle:   "A step by step flow on how to use Arcanist with git on Phabricator, including pre-push code review. In this first part we will focus on the developer flow"
 date:       2015-09-20 12:00:00
 author:     "Thomas Barthelemy"
-tags:       [phabricator, arcanist, git]
+tags:       [phabricator, git]
 ---
 
 # Arcanist flow for developers
@@ -41,6 +41,10 @@ or `--limit <max>` to limit the number of tasks displayed.
 
 *Note that by default tasks are sorted by priority*
 
+You can open any **Phabricator** object (task, diff, file...) in your web browser if you have its id:
+
+    arc browse <object id>
+
 ## I Got a task, now I want to start!
 
 ### Setting the task in progress
@@ -62,7 +66,7 @@ To start a new branch, to work on your task:
     arc feature txx_do_something
 
 This will create a branch called txx_do_something,
-you can still use `git checkout master; git checkout -b txx_do_something` if you prefer, it's the same.
+you can still use `git checkout master` + `git checkout -b txx_do_something` if you prefer, it's the same.
 
 *Note that `arc feature` has an alias called `arc branch`. Same command!*
 
