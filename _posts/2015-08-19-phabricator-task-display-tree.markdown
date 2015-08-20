@@ -2,7 +2,7 @@
 layout:     post-no-pic
 title:      "Displaying a simple Task tree in Phabricator"
 subtitle:   "How to display the children of a task in a visual tree in Phabricator's Maniphest"
-date:       2015-09-19 12:01:00
+date:       2015-08-19 12:01:00
 author:     "Thomas Barthelemy"
 tags:       [phabricator]
 ---
