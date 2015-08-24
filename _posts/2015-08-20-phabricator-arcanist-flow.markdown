@@ -1,8 +1,8 @@
 ---
 layout:     post-no-pic
-title:      "A simple flow using Arcanist and Differential for code review (Part 1)"
+title:      "Simple flow using Arcanist and Differential for code review (Part 1)"
 subtitle:   "A step by step flow on how to use Arcanist with git on Phabricator, including pre-push code review. In this first part we will focus on the developer flow"
-date:       2015-09-20 12:00:00
+date:       2015-08-20 12:00:00
 author:     "Thomas Barthelemy"
 tags:       [phabricator, git]
 ---
