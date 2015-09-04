@@ -1,6 +1,6 @@
 ---
 layout:     post-no-pic
-title:      "Simple flow using Arcanist and Differential for code review (Part 1)"
+title:      "Simple flow using Arcanist and Differential for code review"
 subtitle:   "A step by step flow on how to use Arcanist with git on Phabricator, including pre-push code review. In this first part we will focus on the developer flow"
 date:       2015-08-20 12:00:00
 author:     "Thomas Barthelemy"
@@ -57,6 +57,8 @@ This also will help track your time spent on the it.
 Tasks name start with a `T` so it will be something like `arc start T20`.
 *Note that the name is not case sensitive so `t20` will work too.*
 
+Also using `arc start` with no arguments will list the tasks you have already started.
+
 ### Creating the feature branch 
 	
 To start a new branch, to work on your task:
@@ -93,6 +95,10 @@ Once you selected what you wanted to commit, it's time for some **code-review** 
 This will ask you if you want to commit (if you haven't) then (if not provided) will ask you for some extra information
 such as the reviewers (i.e who will review you code!).
 If you wish to diff everything (add everything then diff) you can use `arc diff -a`.
+**Important**: When doing an `arc diff`, it's expected that everything will be added to a commit,
+so be carefull with unstaged/untracked files, consider using `git stash`.
+The main idea behind that is to be able to `arc land` peacfully,
+which will delete your current branch which is an issue if you have unstaged/untracked files.
 
 Once this is done you will be given an URL for your diff where the code review will happen.
 
