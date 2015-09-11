@@ -27,16 +27,16 @@ The first step is to tell Phabricator what server will be used to run your build
 
 What are we really doing here?
 
- - `./bin/drydock create-resource` -> We want to create a new resource
- - `--blueprint 42` -> for the blueprint with id = 42
- - `--name localhost` -> The name of the created resource will be `localhost`
- - `--attributes` -> The resource configuration
- -- `host=localhost` -> The IP or hostname of the server
- -- `platform=linux` -> The type of server (`windows` or `linux`)
- -- `remote=true` -> Whether it's a remote server or not
- -- `port=22` -> The port that will be used to SSH into the server
- -- `path=/var/drydock` -> Where the build will happen
- -- `credential=2000` -> The **Passphrase** credential id used to SSH into the server
+ - `./bin/drydock create-resource`: We want to create a new resource
+ - `--blueprint 42`: for the blueprint with id = 42
+ - `--name localhost`: The name of the created resource will be `localhost`
+ - `--attributes`: The resource configuration
+   - `host=localhost`: The IP or hostname of the server
+   - `platform=linux`: The type of server (`windows` or `linux`)
+   - `remote=true`: Whether it's a remote server or not
+   - `port=22`: The port that will be used to SSH into the server
+   - `path=/var/drydock`: Where the build will happen
+   - `credential=2000`: The **Passphrase** credential id used to SSH into the server
  
  At this point your **DryDock Blueprint** should proudly display the newly created resource.
  
@@ -57,9 +57,9 @@ There are 2 main things here to keep in mind:
 
 Everything is ready for you to create your first **Build Plan*:
 
- - Go in **HarborMaster**
- - Click on `Manage Build Plan`
- - Click on `New Build Plan` and create your new build plan
+ 1. Go in **HarborMaster**
+ 2. Click on `Manage Build Plan`
+ 3. Click on `New Build Plan` and create your new build plan
 
 To run command on your server you first need to `Lease` an host,
 for that add a `Build step` of type `Lease Host`:
@@ -77,7 +77,7 @@ for that add a `Build step` of type `Lease Host`:
 # Considerations
 
 Right now **DryDock** is in a very early stage and a little extra leg-work might be necessary,
-for example our flow is based on **Differential* code review rather than **Audit** code review
+for example our flow is based on **Differential** code review rather than **Audit** code review
 which means it can not directly be "checked out".
 For that reason the following commands are set right after the lease:
 
