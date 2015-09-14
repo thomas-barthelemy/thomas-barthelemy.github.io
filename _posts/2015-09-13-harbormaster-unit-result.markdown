@@ -28,7 +28,7 @@ This is available as one of the variable provided by **HarborMaster**:
 ## type
 
 The type of result, that will be one of the following: `pass`, `fail` or `work`.
-Those values are detailed in the [Conduit API Documentation](http://thomas-barthelemy.github.io/2015/09/11/phpunit-phabricator-drydock-harbormaster/))
+Those values are detailed in the [Conduit API Documentation](https://secure.phabricator.com/conduit/method/harbormaster.sendmessage/)
 
 It will be necessary to understand our Unit results to give the right value.
 
