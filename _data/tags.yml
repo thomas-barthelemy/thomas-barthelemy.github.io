@@ -54,3 +54,6 @@
 
 - slug: docker
   name: Docker
+  
+- slug: spotlight
+  name: Spotlight
