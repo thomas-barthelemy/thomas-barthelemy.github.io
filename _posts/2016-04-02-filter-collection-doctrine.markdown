@@ -2,7 +2,7 @@
 layout:     post-no-pic
 title:      "Filtering doctrine collections"
 subtitle:   "How to filter collections on the database side in a doctrine entity"
-date:       2016-04-02 18:33:00
+date:       2016-04-02 00:00:00
 author:     "Thomas Barthelemy"
 tags:       [php]
 ---
@@ -25,14 +25,14 @@ Basically I needed something that would look like:
 Which is obviously not a feature.
 
 1st idea
--------
+--------
 
 One possible way is to updated everywhere the collection is used and do the filtering.
 That means a lot of things to change, which is not really maintainable, and it
 does not happen on the database level so not really great performances.
 
 2sd idea
--------
+--------
 
 The second though was to manually query what was needed wherever it was needed.
 This could have worked but a few things got in the way.
@@ -40,10 +40,10 @@ This could have worked but a few things got in the way.
  - It's still not maintainable, it's a lot of changes in a lot of different places
  - So far the FOS REST bundle was serializing things automatically which is very convenient, definitely didn't want to change that
 
- Criteria
- -------
+Criteria
+--------
 
- The first step towards the light was using criteria, changing the getter definition as follows:
+The first step towards the light was using criteria, changing the getter definition as follows:
 
      /**
       * Get Addresses
